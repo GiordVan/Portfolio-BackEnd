@@ -1,7 +1,7 @@
-FROM amazoncorretto:8-alpine-jdk
+FROM amazoncorretto:11-alpine-jdk
 
-COPY target/Giordvan-0.0.1-SNAPSHOT.jar app.jar
+MAINTAINER Giordvan
 
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+COPY target/Giordvan-0.0.1-SNAPSHOT Giordvan-app.jar
 
-EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/Giordvan-app.jar"]
