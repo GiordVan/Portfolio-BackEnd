@@ -20,14 +20,14 @@ public class JwtProvider {
      
     @Value("secret")
     private String secret;
-    @Value("3600")
+    @Value("3600000")
     private int expiration;
 
     public String generateToken(Authentication authentication) {
         UsuarioPrincipal usuarioPrincipal = (UsuarioPrincipal) authentication.getPrincipal();
         return Jwts.builder().setSubject(usuarioPrincipal.getUsername())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + expiration * 1000))
+                .setExpiration(new Date(new Date().getTime() + expiration * 100000))
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
